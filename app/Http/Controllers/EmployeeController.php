@@ -12,10 +12,12 @@ class EmployeeController extends Controller
         $employee = new Employee;
         $employee->image=$req->file('image')->store('employee');
         $employee->username = $req->input('username');
-        $employee->role = $req->input('role');
         $employee->email = $req->input('email');
-        $employee->mobileno = $req->input('mobileno');
+        $employee->mobileNumber = $req->input('mobileNumber');
+        $employee->role = $req->input('role');
         $employee->password = $req->input('password');
+        $employee->address = $req->input('address');
+        $employee->salary = $req->input('salary');
         $employee->save();
 
         return $employee;
