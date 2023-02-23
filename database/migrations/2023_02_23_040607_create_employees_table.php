@@ -23,6 +23,14 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('salary')->nullable();
             $table->string('password')->nullable();
+            $table->string('username')->nullable();
+            $table->string('email')->nullable();
+            $table->string('mobileNumber')->nullable();
+            $table->string('role')->nullable();
+            $table->string('password')->nullable();
+            $table->string('address')->nullable();
+            $table->string('salary')->nullable();
+
 
             $table->timestamps();
         });

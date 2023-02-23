@@ -18,6 +18,8 @@ class EmployeeController extends Controller
         $employee->address = $req->input('address');
         $employee->salary = $req->input('salary');
         $employee->password = $req->input('password');
+        $employee->address = $req->input('address');
+        $employee->salary = $req->input('salary');
         $employee->save();
 
         return $employee;
