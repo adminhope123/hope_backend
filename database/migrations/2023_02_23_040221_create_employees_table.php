@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->nullable();
+            // $table->string('image')->nullable();
             $table->string('userName')->nullable();
             $table->string('role')->nullable();
             $table->string('email')->nullable();
