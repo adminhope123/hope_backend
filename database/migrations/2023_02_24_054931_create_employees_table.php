@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('mobileNumber')->nullable();
             $table->string('salary')->nullable();
             $table->string('password')->nullable();
-
             $table->timestamps();
         });
     }
