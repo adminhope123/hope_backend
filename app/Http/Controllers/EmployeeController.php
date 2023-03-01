@@ -109,7 +109,7 @@ class EmployeeController extends Controller
             $file = $req->file('image');
             $extension = $file->getClientOriginalExtension();
             $filename = time() .'.'.$extension;
-            $file->move('upload\employeeimg',$filename);
+            $file->move('upload/employeeimg/',$filename);
             $employee->image = 'upload/employeeimg/'.$filename;
         }
         $employee->E_Id=$unique_id;
@@ -154,7 +154,7 @@ class EmployeeController extends Controller
     public function updatesaveemployee(Request $req, $employeeEditIdData)
     {
         $employee = Employee::find($employeeEditIdData);
-        // $employee->image=$req->file('image')->store('employee');
+        $employee->image=$req->file('image')->store('employee');
         $employee->userName = $req->input('userName');
         $employee->role = $req->input('role');
         $employee->email = $req->input('email');
