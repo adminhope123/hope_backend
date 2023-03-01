@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('employees', function (Blueprint $table) {
+        Schema::create('admin_logins', function (Blueprint $table) {
             $table->id();
-            // $table->string('image')->nullable();
-            $table->string('E_Id')->nullable();
-            $table->string('userName')->nullable();
-            $table->string('role')->nullable();
             $table->string('email')->nullable();
-            $table->string('mobileNumber')->nullable();
-            $table->string('salary')->nullable();
             $table->string('password')->nullable();
             $table->timestamps();
         });
@@ -34,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employees');
+        Schema::dropIfExists('admin_logins');
     }
 };

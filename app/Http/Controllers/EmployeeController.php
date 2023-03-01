@@ -5,14 +5,88 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Contracts\Session\Session;
+use App\Helpers\Helper;
+
+
 
 
 class EmployeeController extends Controller
 {
+
+    public function adminlogin(Request $Req)
+    {
+        // $req->validate([
+        //     'Email' => 'required|regex:/(.+)@(.+)\.(.+)/i',
+        //     'Password' => 'required | max:10 | min:8'
+        // ]);
+
+
+        // $login = DB::table('admin_logins')->where('email', '=', $req->email)->first();
+
+        // if ($login) {
+        //    if (Hash::check($req->password, $login->password)) {
+        //        $req->session()->put('Logincheck', $login->id);
+        //     return $req->password;
+        //     return $login;
+        //     } else {
+        //         return "Password is not matched!!";
+        //     }
+        // } else {
+        //     return "Email is not matched!!";
+        // }
+
+        $APIadmin_login = DB::table('admin_logins')->where([['email', '=', $Req->email]])->get()->first();
+
+
+        if ($APIadmin_login) {
+
+            if (Hash::check($Req->password, $APIadmin_login->password)) {
+
+                $admin_login['status'] = 1;
+                $admin_login['message'] = "Login Successfully....";
+                return $admin_login;
+            } else {
+                $admin_login['status'] = 0;
+                $admin_login['message'] = "Password Not Matched....";
+                return $admin_login;
+            }
+        } else {
+            $admin_login['status'] = 0;
+            $admin_login['message'] = "Email Not Matched....";
+            return $admin_login;
+        }
+
+    }
+
+    public function userlogin(Request $Req){
+
+        $APIuser_login = DB::table('employees')->where([['email', '=', $Req->email]])->get()->first();
+
+// return $APIuser_login->password;
+        if ($APIuser_login) {
+
+            if (Hash::check($Req->password, $APIuser_login->password)) {
+
+                $user_login['status'] = 1;
+                $user_login['message'] = "Login Successfully....";
+                return $user_login;
+            } else {
+                $user_login['status'] = 0;
+                $user_login['message'] = "Password Not Matched....";
+                return $user_login;
+            }
+        } else {
+            $user_login['status'] = 0;
+            $user_login['message'] = "Email Not Matched....";
+            return $user_login;
+        }
+
+    }
+
     public function employee(Request $req)
     {
-
-
         $E_data = Employee::orderBy('id','desc')->first();
         $prefix  = 'E';
         $code_E = substr($E_data->E_Id,strlen($prefix)+1);
@@ -29,33 +103,22 @@ class EmployeeController extends Controller
 
         $unique_id = $prefix.$emp.$last_number;
 
-        // dd($unique_id);
-
-
-        // $E_Id = "E" . (rand(1000, 9999));
-
-
-        // $E = DB::table('employees')->select('E_Id')->where([['E_Id', '=', $E_Id]])->get()->first();
-
-        // if ($E) {
-        //     do {
-        //         $E_Id = "E" . (rand(1000, 9999));
-        //     } while ($E_Id == $E);
-
-        //     $employee->E_Id = $E_Id;
-        // } else {
-        //     $employee->E_Id = $E_Id;
-        // }
-
         $employee = new Employee();
         // $employee->image=$req->file('image')->store('employee');
+        if($req->hasfile('image')){
+            $file = $req->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() .'.'.$extension;
+            $file->move('upload\employeeimg',$filename);
+            $employee->image = 'upload/employeeimg/'.$filename;
+        }
         $employee->E_Id=$unique_id;
         $employee->userName = $req->input('userName');
         $employee->role = $req->input('role');
         $employee->email = $req->input('email');
         $employee->mobileNumber = $req->input('mobileNumber');
         $employee->salary = $req->input('salary');
-        $employee->password = $req->input('password');
+        $employee->password = Hash::make($req->input('password'));
         $employee->save();
 
         return $employee;
@@ -97,7 +160,7 @@ class EmployeeController extends Controller
         $employee->email = $req->input('email');
         $employee->mobileNumber = $req->input('mobileNumber');
         $employee->salary = $req->input('salary');
-        $employee->password = $req->input('password');
+        $employee->password = Hash::make($req->input('password'));
 
         $employee->update();
 
