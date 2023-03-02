@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Uprofile;
+use App\Models\Utimer;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Session\Session;
@@ -59,6 +60,58 @@ class EmployeeController extends Controller
             return $admin_login;
         }
 
+    }
+
+    public function usertimer(Request $req)
+    {
+        $data = new Utimer;
+        $data->employeeId = $req->employeeId;
+        $data->timerid = $req->timerid;
+        $data->state = $req->state;
+        $data->parent = $req->parent;
+        $data->date = $req->date;
+        $data->start = $req->start;
+        $data->stop = $req->stop;
+        $data->color = $req->color;
+        $data->hours = $req->hours;
+        $data->day = $req->day;
+        $data->mins = $req->mins;
+        $data->secs = $req->secs;
+        $data->present = $req->present;
+        $data->absent = $req->absent;
+        $data->totalSeconds = $req->totalSeconds;
+        $data -> save();
+        return $data;
+    }
+
+    public function usertimerupdate($employeeEditIdData)
+    {
+        Utimer::whereId($employeeEditIdData)->update();
+        return "Record Updated";
+    }
+
+    public function usertimerupdatesave(Request $req,$employeeEditIdData)
+    {
+        $data = Utimer::find($employeeEditIdData);
+        $data->employeeId = $req->input('employeeId');
+        $data->timerid = $req->input('timerid');
+        $data->state = $req->input('state');
+        $data->parent = $req->input('parent');
+        $data->date = $req->input('date');
+        $data->start = $req->input('start');
+        $data->stop = $req->input('stop');
+        $data->color = $req->input('color');
+        $data->hours = $req->input('hours');
+        $data->day = $req->input('day');
+        $data->mins = $req->input('mins');
+        $data->secs = $req->input('secs');
+        $data->present = $req->input('present');
+        $data->absent = $req->input('absent');
+        $data->totalSeconds = $req->input('totalSeconds');
+
+        $data->update();
+
+        return $data;
     }
 
     public function userprofile(Request $req)
@@ -162,7 +215,6 @@ class EmployeeController extends Controller
     {
         // $employee = Employee::find($employeeEditIdData);
         Employee::whereId($employeeEditIdData)->update();
-
 
         return "Record Updated";
 
