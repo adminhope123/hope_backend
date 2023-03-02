@@ -56,6 +56,32 @@ class EmployeeController extends Controller
         return $data;
     }
 
+    public function viewUattendence()
+    {
+        $data = Uattendence::all();
+        return $data;
+    }
+
+    public function Uattendenceupdate($employeeEditIdData)
+    {
+        Uattendence::whereId($employeeEditIdData)->update();
+        return "Record Updated";
+    }
+
+    public function Uattendenceupdatesave(Request $req,$employeeEditIdData)
+    {
+        $data = Uattendence::find($employeeEditIdData);
+        $data->employeeId = $req->input('employeeId');
+        $data->absent = $req->input('absent');
+        $data->date = $req->input('date');
+        $data->day = $req->input('day');
+        $data->present = $req->input('present');
+        $data->totalwork = $req->input('totalwork');
+        $data->update();
+
+        return $data;
+    }
+
     public function usertimer(Request $req)
     {
         $data = new Utimer();

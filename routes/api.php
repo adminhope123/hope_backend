@@ -27,6 +27,9 @@ Route::post('/userlogin', [EmployeeController::class, 'userlogin']);
 Route::get('/userprofile', [EmployeeController::class, 'userprofile']);
 
 Route::post('/Uattendence', [EmployeeController::class, 'Uattendence']);
+Route::get('/viewUattendence', [EmployeeController::class, 'viewUattendence']);
+Route::get('/Uattendenceupdate/{employeeEditIdData}', [EmployeeController::class, 'Uattendenceupdate']);
+Route::put('/Uattendenceupdatesave/{employeeEditIdData}', [EmployeeController::class, 'Uattendenceupdatesave']);
 
 Route::post('/usertimer', [EmployeeController::class, 'usertimer']);
 Route::get('/viewtimer', [EmployeeController::class, 'viewtimer']);
