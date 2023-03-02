@@ -19,26 +19,6 @@ class EmployeeController extends Controller
 
     public function adminlogin(Request $Req)
     {
-        // $req->validate([
-        //     'Email' => 'required|regex:/(.+)@(.+)\.(.+)/i',
-        //     'Password' => 'required | max:10 | min:8'
-        // ]);
-
-
-        // $login = DB::table('admin_logins')->where('email', '=', $req->email)->first();
-
-        // if ($login) {
-        //    if (Hash::check($req->password, $login->password)) {
-        //        $req->session()->put('Logincheck', $login->id);
-        //     return $req->password;
-        //     return $login;
-        //     } else {
-        //         return "Password is not matched!!";
-        //     }
-        // } else {
-        //     return "Email is not matched!!";
-        // }
-
         $APIadmin_login = DB::table('admin_logins')->where([['email', '=', $Req->email]])->get()->first();
 
 
@@ -64,7 +44,7 @@ class EmployeeController extends Controller
 
     public function usertimer(Request $req)
     {
-        $data = new Utimer;
+        $data = new Utimer();
         $data->employeeId = $req->employeeId;
         $data->timerid = $req->timerid;
         $data->state = $req->state;
@@ -81,6 +61,13 @@ class EmployeeController extends Controller
         $data->absent = $req->absent;
         $data->totalSeconds = $req->totalSeconds;
         $data -> save();
+        return $data;
+    }
+
+    public function viewtimer()
+    {
+        $data = Utimer::all();
+
         return $data;
     }
 
