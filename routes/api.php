@@ -23,12 +23,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/adminlogin', [EmployeeController::class, 'adminlogin']);
 Route::post('/userlogin', [EmployeeController::class, 'userlogin']);
+
+Route::post('/userprofile', [EmployeeController::class, 'userprofile']);
+
 Route::post('/employee', [EmployeeController::class, 'employee']);
-Route::get('/viewemployee', [EmployeeController::class, 'viewemployee']);
+Route::post('/viewemployee', [EmployeeController::class, 'viewemployee']);
 Route::delete('/deleteemployee/{employeeEditIdData}', [EmployeeController::class, 'deleteemployee']);
 Route::get('/updateemployee/{employeeEditIdData}', [EmployeeController::class, 'updateemployee']);
 Route::put('/updatesaveemployee/{employeeEditIdData}', [EmployeeController::class, 'updatesaveemployee']);
-
-
-
-

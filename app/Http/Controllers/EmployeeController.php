@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Models\Uprofile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Session\Session;
@@ -60,11 +61,27 @@ class EmployeeController extends Controller
 
     }
 
+    public function userprofile(Request $req)
+    {
+        $data = new Uprofile;
+
+        $data->fullname = $req->fullname;
+        $data->post = $req->post;
+        $data->mobile = $req->mobile;
+        $data->address = $req->address;
+        $data->birthDate = $req->birthDate;
+        $data->gender = $req->gender;
+        $data->countries = $req->countries;
+        $data->state = $req->state;
+        $data->city = $req->city;
+        $data -> save();
+        return $data;
+    }
+
     public function userlogin(Request $Req){
 
         $APIuser_login = DB::table('employees')->where([['email', '=', $Req->email]])->get()->first();
 
-// return $APIuser_login->password;
         if ($APIuser_login) {
 
             if (Hash::check($Req->password, $APIuser_login->password)) {
