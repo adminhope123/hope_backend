@@ -13,23 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('utimers', function (Blueprint $table) {
+        Schema::create('uattendences', function (Blueprint $table) {
             $table->id();
             $table->string('employeeId')->nullable();
-            $table->string('timerid')->nullable();
-            $table->string('state')->nullable();
-            $table->string('parent')->nullable();
-            $table->string('date')->nullable();
-            $table->string('start')->nullable();
-            $table->string('stop')->nullable();
-            $table->string('color')->nullable();
-            $table->string('hours')->nullable();
-            $table->string('day')->nullable();
-            $table->string('mins')->nullable();
-            $table->string('secs')->nullable();
-            $table->string('present')->nullable();
             $table->string('absent')->nullable();
-            $table->string('totalSeconds')->nullable();
+            $table->string('date')->nullable();
+            $table->string('day')->nullable();
+            $table->string('present')->nullable();
+            $table->string('totalwork')->nullable();
             $table->timestamps();
         });
     }
@@ -41,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('utimers');
+        Schema::dropIfExists('uattendences');
     }
 };

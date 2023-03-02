@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Uprofile;
 use App\Models\Utimer;
+use App\Models\Uattendence;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Session\Session;
@@ -42,6 +43,19 @@ class EmployeeController extends Controller
 
     }
 
+    public function Uattendence(Request $req){
+
+        $data = new Uattendence();
+        $data->employeeId = $req->employeeId;
+        $data->absent = $req->absent;
+        $data->date = $req->date;
+        $data->day = $req->day;
+        $data->present = $req->present;
+        $data->totalwork = $req->totalwork;
+        $data->save();
+        return $data;
+    }
+
     public function usertimer(Request $req)
     {
         $data = new Utimer();
@@ -60,6 +74,7 @@ class EmployeeController extends Controller
         $data->present = $req->present;
         $data->absent = $req->absent;
         $data->totalSeconds = $req->totalSeconds;
+        $data->totalTimeWork = $req->totalTimeWork;
         $data -> save();
         return $data;
     }
@@ -95,7 +110,7 @@ class EmployeeController extends Controller
         $data->present = $req->input('present');
         $data->absent = $req->input('absent');
         $data->totalSeconds = $req->input('totalSeconds');
-
+        $data->totalTimeWork = $req->input('totalTimeWork');
         $data->update();
 
         return $data;
