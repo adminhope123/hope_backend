@@ -64,7 +64,7 @@ class EmployeeController extends Controller
     public function userprofile(Request $req)
     {
         $data = new Uprofile;
-
+        $data->E_Id = $req->E_Id;
         $data->fullname = $req->fullname;
         $data->post = $req->post;
         $data->mobile = $req->mobile;

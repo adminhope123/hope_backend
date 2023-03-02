@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('uprofiles', function (Blueprint $table) {
             $table->id();
+            $table->string('E_Id')->nullable();
             $table->string('fullname')->nullable();
             $table->string('post')->nullable();
             $table->string('mobile')->nullable();
