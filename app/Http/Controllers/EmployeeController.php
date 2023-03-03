@@ -86,7 +86,7 @@ class EmployeeController extends Controller
     {
         $data = new Utimer();
         $data->employeeId = $req->employeeId;
-        $data->timerid = $req->timerid;
+        $data->timerId = $req->timerId;
         $data->state = $req->state;
         $data->parent = $req->parent;
         $data->date = $req->date;
@@ -99,6 +99,7 @@ class EmployeeController extends Controller
         $data->secs = $req->secs;
         $data->present = $req->present;
         $data->absent = $req->absent;
+        $data->month = $req->month;
         $data->totalSeconds = $req->totalSeconds;
         $data->totalTimeWork = $req->totalTimeWork;
         $data -> save();
@@ -122,7 +123,7 @@ class EmployeeController extends Controller
     {
         $data = Utimer::find($employeeEditIdData);
         $data->employeeId = $req->input('employeeId');
-        $data->timerid = $req->input('timerid');
+        $data->timerId = $req->input('timerId');
         $data->state = $req->input('state');
         $data->parent = $req->input('parent');
         $data->date = $req->input('date');
@@ -136,6 +137,7 @@ class EmployeeController extends Controller
         $data->present = $req->input('present');
         $data->absent = $req->input('absent');
         $data->totalSeconds = $req->input('totalSeconds');
+        $data->month = $req->input('month');
         $data->totalTimeWork = $req->input('totalTimeWork');
         $data->update();
 
