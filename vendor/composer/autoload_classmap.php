@@ -31,6 +31,7 @@ return array(
     'App\\Kernel' => $vendorDir . '/laravel/pint/app/Kernel.php',
     'App\\Models\\AdminLogin' => $baseDir . '/app/Models/AdminLogin.php',
     'App\\Models\\Employee' => $baseDir . '/app/Models/Employee.php',
+    'App\\Models\\Uaddpost' => $baseDir . '/app/Models/Uaddpost.php',
     'App\\Models\\Uattendence' => $baseDir . '/app/Models/Uattendence.php',
     'App\\Models\\Uprofile' => $baseDir . '/app/Models/Uprofile.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

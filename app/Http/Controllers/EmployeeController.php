@@ -138,7 +138,6 @@ class EmployeeController extends Controller
         $data->present = $req->input('present');
         $data->absent = $req->input('absent');
         $data->totalSeconds = $req->input('totalSeconds');
-        $data->month = $req->input('month');
         $data->totalTimeWork = $req->input('totalTimeWork');
         $data->update();
 

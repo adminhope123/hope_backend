@@ -554,6 +554,7 @@ class ComposerStaticInitf78384de591aba80b0489bf03508bb0b
         'App\\Kernel' => __DIR__ . '/..' . '/laravel/pint/app/Kernel.php',
         'App\\Models\\AdminLogin' => __DIR__ . '/../..' . '/app/Models/AdminLogin.php',
         'App\\Models\\Employee' => __DIR__ . '/../..' . '/app/Models/Employee.php',
+        'App\\Models\\Uaddpost' => __DIR__ . '/../..' . '/app/Models/Uaddpost.php',
         'App\\Models\\Uattendence' => __DIR__ . '/../..' . '/app/Models/Uattendence.php',
         'App\\Models\\Uprofile' => __DIR__ . '/../..' . '/app/Models/Uprofile.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
