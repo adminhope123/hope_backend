@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('present')->nullable();
             $table->string('absent')->nullable();
             $table->string('totalSeconds')->nullable();
+            $table->string('month')->nullable();
             $table->string('totalTimeWork')->nullable();
             $table->timestamps();
         });
