@@ -100,7 +100,6 @@ class EmployeeController extends Controller
         $data->secs = $req->secs;
         $data->present = $req->present;
         $data->absent = $req->absent;
-        $data->month = $req->month;
         $data->totalSeconds = $req->totalSeconds;
         $data->totalTimeWork = $req->totalTimeWork;
         $data->save();
