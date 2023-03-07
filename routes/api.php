@@ -36,8 +36,12 @@ Route::get('/viewtimer', [EmployeeController::class, 'viewtimer']);
 Route::get('/usertimerupdate/{employeeEditIdData}', [EmployeeController::class, 'usertimerupdate']);
 Route::put('/usertimerupdatesave/{employeeEditIdData}', [EmployeeController::class, 'usertimerupdatesave']);
 
-Route::get('/employee', [EmployeeController::class, 'employee']);
+Route::post('/employee', [EmployeeController::class, 'employee']);
 Route::get('/viewemployee', [EmployeeController::class, 'viewemployee']);
 Route::delete('/deleteemployee/{employeeEditIdData}', [EmployeeController::class, 'deleteemployee']);
 Route::get('/updateemployee/{employeeEditIdData}', [EmployeeController::class, 'updateemployee']);
 Route::put('/updatesaveemployee/{employeeEditIdData}', [EmployeeController::class, 'updatesaveemployee']);
+
+Route::post('/Uaddpost', [EmployeeController::class, 'Uaddpost']);
+Route::get('/viewUaddpost', [EmployeeController::class, 'viewUaddpost']);
+Route::delete('/Uaddpostdelete/{employeeEditIdData}', [EmployeeController::class, 'Uaddpostdelete']);

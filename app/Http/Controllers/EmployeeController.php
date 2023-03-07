@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Uprofile;
+use App\Models\Uaddpost;
 use App\Models\Utimer;
 use App\Models\Uattendence;
 use Illuminate\Support\Facades\DB;
@@ -143,6 +144,35 @@ class EmployeeController extends Controller
         return $data;
     }
 
+    // ................................User add post................................
+
+    public function Uaddpost(Request $req)
+    {
+        $data = new Uaddpost();
+        if ($req->hasfile('image')) {
+            $file = $req->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('postimg/', $filename);
+            $data->image = 'postimg/' . $filename;
+        }
+        $data->role = $req->role;
+        $data->save();
+        return $data;
+    }
+
+    public function viewUaddpost()
+    {
+        $data = Uaddpost::all();
+        return $data;
+    }
+
+    public function Uaddpostdelete($employeeEditIdData)
+    {
+        Uaddpost::whereId($employeeEditIdData)->delete();
+        return 'Record deleted';
+    }
+
     // .................................User Profile................................
 
     public function userprofile(Request $req)
@@ -249,9 +279,7 @@ class EmployeeController extends Controller
     public function updatesaveemployee(Request $req, $employeeEditIdData)
     {
         $employee = Employee::find($employeeEditIdData);
-        $employee->image = $req->file('image')->store('employee');
         $employee->userName = $req->input('userName');
-        $employee->role = $req->input('role');
         $employee->email = $req->input('email');
         $employee->mobileNumber = $req->input('mobileNumber');
         $employee->salary = $req->input('salary');
