@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('date')->nullable();
             $table->string('day')->nullable();
             $table->string('present')->nullable();
-            $table->string('totalwork')->nullable();
+            $table->string('totalWorkTime')->nullable();
+
             $table->timestamps();
         });
     }
