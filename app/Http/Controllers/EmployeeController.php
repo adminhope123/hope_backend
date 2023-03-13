@@ -192,6 +192,33 @@ class EmployeeController extends Controller
         return $data;
     }
 
+    public function viewuserprofile()
+    {
+        $data = Uprofile::all();
+
+        return $data;
+    }
+
+    public function userprofileupdate($employeeEditIdData)
+    {
+        Uprofile::whereId($employeeEditIdData)->update();
+        return 'Record Updated';
+    }
+
+    public function userprofileupdatesave(Request $req, $employeeEditIdData)
+    {
+        $data = Uprofile::find($employeeEditIdData);
+        $data->address = $req->input('address');
+        $data->birthDate = $req->input('birthDate');
+        $data->gender = $req->input('gender');
+        $data->countries = $req->input('countries');
+        $data->state = $req->input('state');
+        $data->city = $req->input('city');
+        $data->update();
+
+        return $data;
+    }
+
     // ................................User Login................................
 
     public function userlogin(Request $Req)
@@ -280,7 +307,7 @@ class EmployeeController extends Controller
     {
         $employee = Employee::find($employeeEditIdData);
         $employee->userName = $req->input('userName');
-        $employee->email = $req->input('email');
+            $employee->email = $req->input('email');
         $employee->mobileNumber = $req->input('mobileNumber');
         $employee->salary = $req->input('salary');
         $employee->password = Hash::make($req->input('password'));

@@ -24,7 +24,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/adminlogin', [EmployeeController::class, 'adminlogin']);
 Route::post('/userlogin', [EmployeeController::class, 'userlogin']);
 
-Route::get('/userprofile', [EmployeeController::class, 'userprofile']);
+Route::post('/userprofile', [EmployeeController::class, 'userprofile']);
+Route::get('/viewuserprofile', [EmployeeController::class, 'viewuserprofile']);
+Route::get('/userprofileupdate/{employeeEditIdData}', [EmployeeController::class, 'userprofileupdate']);
+Route::put('/userprofileupdatesave/{employeeEditIdData}', [EmployeeController::class, 'userprofileupdatesave']);
+
 
 Route::post('/Uattendence', [EmployeeController::class, 'Uattendence']);
 Route::get('/viewUattendence', [EmployeeController::class, 'viewUattendence']);
