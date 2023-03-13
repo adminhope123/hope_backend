@@ -51,7 +51,7 @@ class EmployeeController extends Controller
         $data->date = $req->date;
         $data->day = $req->day;
         $data->present = $req->present;
-        $data->totalwork = $req->totalwork;
+        $data->totalWorkTime = $req->totalWorkTime;
         $data->save();
         return $data;
     }
@@ -76,7 +76,7 @@ class EmployeeController extends Controller
         $data->date = $req->input('date');
         $data->day = $req->input('day');
         $data->present = $req->input('present');
-        $data->totalwork = $req->input('totalwork');
+        $data->totalWorkTime = $req->input('totalWorkTime');
         $data->update();
 
         return $data;
