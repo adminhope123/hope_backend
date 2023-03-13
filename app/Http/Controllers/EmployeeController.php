@@ -178,6 +178,13 @@ class EmployeeController extends Controller
     public function userprofile(Request $req)
     {
         $data = new Uprofile();
+        if ($req->hasfile('image')) {
+            $file = $req->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('profileimg/', $filename);
+            $data->image = 'profileimg/' . $filename;
+        }
         $data->E_Id = $req->E_Id;
         $data->fullname = $req->fullname;
         $data->post = $req->post;
