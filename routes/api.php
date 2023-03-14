@@ -30,6 +30,15 @@ Route::get('/userprofileupdate/{employeeEditIdData}', [EmployeeController::class
 Route::put('/userprofileupdatesave/{employeeEditIdData}', [EmployeeController::class, 'userprofileupdatesave']);
 
 
+Route::post('/task', [EmployeeController::class, 'task']);
+Route::get('/viewtask', [EmployeeController::class, 'viewtask']);
+Route::delete('/deletetask/{employeeEditIdData}', [EmployeeController::class, 'deletetask']);
+Route::get('/updatetask/{employeeEditIdData}', [EmployeeController::class, 'updatetask']);
+Route::put('/updatesavetask/{employeeEditIdData}', [EmployeeController::class, 'updatesavetask']);
+
+
+
+
 Route::post('/Uattendence', [EmployeeController::class, 'Uattendence']);
 Route::get('/viewUattendence', [EmployeeController::class, 'viewUattendence']);
 Route::get('/Uattendenceupdate/{employeeEditIdData}', [EmployeeController::class, 'Uattendenceupdate']);

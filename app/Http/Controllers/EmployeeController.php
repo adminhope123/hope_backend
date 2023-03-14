@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Session\Session;
 use App\Helpers\Helper;
+use App\Models\Task;
 
 class EmployeeController extends Controller
 {
@@ -322,5 +323,48 @@ class EmployeeController extends Controller
         $employee->update();
 
         return $employee;
+    }
+
+    public function task(Request $req)
+    {
+        $data = new Task();
+
+        $data->E_Id =  $req->E_Id;
+        $data->task = $req->task;
+        $data->read = $req->read;
+        $data->save();
+
+        return $data;
+    }
+
+    public function viewtask()
+    {
+        $data = Task::all();
+
+        return $data;
+    }
+
+    public function deletetask($employeeEditIdData)
+    {
+        Task::whereId($employeeEditIdData)->delete();
+        return 'Record deleted';
+    }
+
+    public function updatetask($employeeEditIdData)
+    {
+        Task::whereId($employeeEditIdData)->update();
+        return 'Record Updated';
+    }
+
+    public function updatesavetask(Request $req, $employeeEditIdData)
+    {
+        $data = Task::find($employeeEditIdData);
+        $data->E_Id = $req->input('E_Id');
+        $data->task = $req->input('task');
+        $data->read = $req->input('read');
+
+        $data->update();
+
+        return $data;
     }
 }

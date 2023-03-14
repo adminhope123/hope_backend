@@ -352,8 +352,8 @@ class ComposerStaticInitc4ca30668dce7144022e0cdc16d29d71
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -546,6 +546,7 @@ class ComposerStaticInitc4ca30668dce7144022e0cdc16d29d71
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\AdminLogin' => __DIR__ . '/../..' . '/app/Models/AdminLogin.php',
         'App\\Models\\Employee' => __DIR__ . '/../..' . '/app/Models/Employee.php',
+        'App\\Models\\Task' => __DIR__ . '/../..' . '/app/Models/Task.php',
         'App\\Models\\Uaddpost' => __DIR__ . '/../..' . '/app/Models/Uaddpost.php',
         'App\\Models\\Uattendence' => __DIR__ . '/../..' . '/app/Models/Uattendence.php',
         'App\\Models\\Uprofile' => __DIR__ . '/../..' . '/app/Models/Uprofile.php',
