@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('E_Id');
             $table->string('task');
             $table->string('read');
-
             $table->timestamps();
         });
     }
