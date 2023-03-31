@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Session\Session;
 use App\Helpers\Helper;
 use App\Models\Task;
+use App\Models\Calendar;
 
 class EmployeeController extends Controller
 {
@@ -178,7 +179,7 @@ class EmployeeController extends Controller
 
     public function userprofile(Request $req)
     {
-        $data = new Uprofile();
+            $data = new Uprofile();
         if ($req->hasfile('image')) {
             $file = $req->file('image');
             $extension = $file->getClientOriginalExtension();
@@ -186,6 +187,7 @@ class EmployeeController extends Controller
             $file->move('profileimg/', $filename);
             $data->image = 'profileimg/' . $filename;
         }
+
         $data->E_Id = $req->E_Id;
         $data->fullname = $req->fullname;
         $data->post = $req->post;
@@ -215,7 +217,15 @@ class EmployeeController extends Controller
 
     public function userprofileupdatesave(Request $req, $employeeEditIdData)
     {
+
         $data = Uprofile::find($employeeEditIdData);
+        // if ($req->image != NULL) {
+        //     $filename = time() . '.' . $data['image']->extension();
+        //     $data['image']->move(public_path('profileimg/'), $filename);
+        //     $data['image'] = $filename;
+        //   }
+
+
         $data->address = $req->input('address');
         $data->birthDate = $req->input('birthDate');
         $data->gender = $req->input('gender');
@@ -366,5 +376,35 @@ class EmployeeController extends Controller
         $data->update();
 
         return $data;
+    }
+
+
+    // EVENT coding
+
+    public function calendar(Request $req)
+    {
+        $data = new Calendar();
+
+        $data->color = $req->color;
+        $data->start = $req->start;
+        $data->end = $req->end;
+        $data->title = $req->title;
+        $data->save();
+
+        return $data;
+
+    }
+
+    public function viewcalendar()
+    {
+        $data = Calendar::all();
+
+        return $data;
+    }
+
+    public function deletecalendar($employeeEditIdData)
+    {
+        Calendar::whereId($employeeEditIdData)->delete();
+        return 'Record deleted';
     }
 }

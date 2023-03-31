@@ -22,6 +22,7 @@ return array(
     'App\\Http\\Middleware\\ValidateSignature' => $baseDir . '/app/Http/Middleware/ValidateSignature.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Models\\AdminLogin' => $baseDir . '/app/Models/AdminLogin.php',
+    'App\\Models\\Calendar' => $baseDir . '/app/Models/Calendar.php',
     'App\\Models\\Employee' => $baseDir . '/app/Models/Employee.php',
     'App\\Models\\Task' => $baseDir . '/app/Models/Task.php',
     'App\\Models\\Uaddpost' => $baseDir . '/app/Models/Uaddpost.php',

@@ -36,6 +36,9 @@ Route::delete('/deletetask/{employeeEditIdData}', [EmployeeController::class, 'd
 Route::get('/updatetask/{employeeEditIdData}', [EmployeeController::class, 'updatetask']);
 Route::put('/updatesavetask/{employeeEditIdData}', [EmployeeController::class, 'updatesavetask']);
 
+Route::post('/calendar', [EmployeeController::class, 'calendar']);
+Route::get('/viewcalendar', [EmployeeController::class, 'viewcalendar']);
+Route::delete('/deletecalendar/{employeeEditIdData}', [EmployeeController::class, 'deletecalendar']);
 
 
 

@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('day')->nullable();
             $table->string('present')->nullable();
             $table->string('totalWorkTime')->nullable();
-
             $table->timestamps();
         });
     }

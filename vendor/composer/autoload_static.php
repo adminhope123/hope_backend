@@ -545,6 +545,7 @@ class ComposerStaticInitc4ca30668dce7144022e0cdc16d29d71
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\AdminLogin' => __DIR__ . '/../..' . '/app/Models/AdminLogin.php',
+        'App\\Models\\Calendar' => __DIR__ . '/../..' . '/app/Models/Calendar.php',
         'App\\Models\\Employee' => __DIR__ . '/../..' . '/app/Models/Employee.php',
         'App\\Models\\Task' => __DIR__ . '/../..' . '/app/Models/Task.php',
         'App\\Models\\Uaddpost' => __DIR__ . '/../..' . '/app/Models/Uaddpost.php',
