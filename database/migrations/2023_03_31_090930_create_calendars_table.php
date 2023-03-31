@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('calendars', function (Blueprint $table) {
             $table->id();
+            $table->string("color");
             $table->string("start");
             $table->string("end");
             $table->string("title");
